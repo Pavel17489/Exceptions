@@ -12,6 +12,11 @@ public class ShopRepository {
      * но с добавлением нового элемента в конец
      */
     private Product[] addToArray(Product[] current, Product product) {
+
+        if (findById(product.getId()) != null){
+            throw new AlreadyExistsException(product.getId());
+        }
+
         Product[] tmp = new Product[current.length + 1];
         for (int i = 0; i < current.length; i++) {
             tmp[i] = current[i];
@@ -22,10 +27,10 @@ public class ShopRepository {
 
     /**
      * Метод добавления товара в репозиторий
-     *
      * @param product — добавляемый товар
      */
     public void add(Product product) {
+
         products = addToArray(products, product);
     }
 
