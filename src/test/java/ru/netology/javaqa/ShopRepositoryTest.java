@@ -73,15 +73,14 @@ class ShopRepositoryTest {
         Product p1 = new Product(1, "ноутбук", 50_000);
         Product p2 = new Product(2, "опрыскиватель", 150);
         Product p3 = new Product(3, "гитара", 25_000);
-        Product p4 = new Product(4, "блокнот", 250);
+        Product p4 = new Product(1, "блокнот", 250);
 
         repo.add(p1);
         repo.add(p2);
         repo.add(p3);
-        repo.add(p4);
 
         Assertions.assertThrows(AlreadyExistsException.class,
-                () -> repo.add(p1)
+                () -> repo.add(p4)
         );
     }
 }
